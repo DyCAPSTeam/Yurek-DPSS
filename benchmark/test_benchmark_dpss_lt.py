@@ -22,8 +22,11 @@ def get_avss_params(ids):
     return g, h, public_keys, private_keys_dict
 
 
-@mark.parametrize("t", [1,3,6,10])
-def test_benchmark_dpss_lt_t_crashes(test_router, benchmark, t):
+# @mark.parametrize("t", [1,3,5,7])
+# @mark.parametrize("batchsize", [1, 250, 500, 750, 1000])
+@mark.parametrize("t", [1, 2])
+@mark.parametrize("batchsize", [1, 2])
+def test_benchmark_dpss_lt_t_crashes(test_router, benchmark, t, batchsize):
     from pypairing import G1, ZR
     n = 3 * t + 1
     d = t
@@ -40,7 +43,6 @@ def test_benchmark_dpss_lt_t_crashes(test_router, benchmark, t):
     crs = gen_pc_const_crs(t, alpha=alpha, g=g, h=h)
     pc = PolyCommitConst(crs)
     sends, recvs, _ = test_router(len(old_committee['ids'] + new_committee['ids']), maxdelay = 0)
-    batchsize = 100*n
 
     secrets, secrets_hat = [ZR.random() for b in range(batchsize)], [ZR.random() for b in range(batchsize)]
     poly = polynomials_over(ZR)
@@ -106,8 +108,11 @@ def test_benchmark_dpss_lt_t_crashes(test_router, benchmark, t):
 
     assert recovered_values_hat == secrets_hat
     '''
-@mark.parametrize("t", [1,3,6,10])
-def test_benchmark_dpss_lt_t(test_router, benchmark, t):
+# @mark.parametrize("t", [1,3,5,7])
+# @mark.parametrize("batchsize", [1, 250, 500, 750, 1000])
+@mark.parametrize("t", [1, 2])
+@mark.parametrize("batchsize", [1, 2])
+def test_benchmark_dpss_lt_t(test_router, benchmark, t, batchsize):
     from pypairing import G1, ZR
     n = 3 * t + 1
     d = t
@@ -124,7 +129,6 @@ def test_benchmark_dpss_lt_t(test_router, benchmark, t):
     crs = gen_pc_const_crs(t, alpha=alpha, g=g, h=h)
     pc = PolyCommitConst(crs)
     sends, recvs, _ = test_router(len(old_committee['ids'] + new_committee['ids']), maxdelay = 0)
-    batchsize = 100*n
 
     secrets, secrets_hat = [ZR.random() for b in range(batchsize)], [ZR.random() for b in range(batchsize)]
     poly = polynomials_over(ZR)

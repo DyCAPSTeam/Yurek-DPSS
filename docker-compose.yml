@@ -30,4 +30,4 @@ services:
       - ./pairing/setup.py:/usr/src/dpss/pairing/setup.py
       - ./:/usr/src/dpss/
       - /usr/src/dpss/dpss/ntl  # Directory _not_ mounted from host
-    command: pytest -v --cov=dpss
+    command: bash test.sh

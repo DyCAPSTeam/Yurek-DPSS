@@ -43,6 +43,7 @@ RUN ln -sf bash /bin/sh
 
 # Install apt dependencies
 # Put apt dependencies here that are needed by all build paths
+RUN sed -i 's/deb.debian.org/mirrors.tuna.tsinghua.edu.cn/g' /etc/apt/sources.list
 RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
     curl \
@@ -58,6 +59,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     sudo 
 
 # Setup virtualenv
+RUN pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
 RUN pip install --upgrade pip virtualenv
 RUN python -m virtualenv ${PYTHON_LIBRARY_PATH}
 
