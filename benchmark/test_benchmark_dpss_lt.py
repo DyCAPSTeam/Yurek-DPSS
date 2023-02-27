@@ -22,10 +22,10 @@ def get_avss_params(ids):
     return g, h, public_keys, private_keys_dict
 
 
-# @mark.parametrize("t", [1,3,5,7])
-# @mark.parametrize("batchsize", [1, 250, 500, 750, 1000])
-@mark.parametrize("t", [1, 2])
-@mark.parametrize("batchsize", [1, 2])
+@mark.parametrize("t", [1,3,5,7])
+@mark.parametrize("batchsize", [1, 250, 500, 750, 1000])
+# @mark.parametrize("t", [1, 2])
+# @mark.parametrize("batchsize", [1, 2])
 def test_benchmark_dpss_lt_t_crashes(test_router, benchmark, t, batchsize):
     from pypairing import G1, ZR
     n = 3 * t + 1
@@ -108,10 +108,10 @@ def test_benchmark_dpss_lt_t_crashes(test_router, benchmark, t, batchsize):
 
     assert recovered_values_hat == secrets_hat
     '''
-# @mark.parametrize("t", [1,3,5,7])
-# @mark.parametrize("batchsize", [1, 250, 500, 750, 1000])
-@mark.parametrize("t", [1, 2])
-@mark.parametrize("batchsize", [1, 2])
+@mark.parametrize("t", [1,3,5,7])
+@mark.parametrize("batchsize", [1, 250, 500, 750, 1000])
+# @mark.parametrize("t", [1, 2])
+# @mark.parametrize("batchsize", [1, 2])
 def test_benchmark_dpss_lt_t(test_router, benchmark, t, batchsize):
     from pypairing import G1, ZR
     n = 3 * t + 1
