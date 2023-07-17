@@ -22,8 +22,8 @@ def get_avss_params(ids):
     return g, h, public_keys, private_keys_dict
 
 
-@mark.parametrize("t", [1,3,5,10])
-@mark.parametrize("batchsize", [1, 50, 100, 200, 400])
+#@mark.parametrize("t", [1,3,5,10])
+#@mark.parametrize("batchsize", [1, 50, 100, 200, 400])
 # @mark.parametrize("t", [1, 2])
 # @mark.parametrize("batchsize", [1, 2])
 # def test_benchmark_dpss_lt_t_crashes(test_router, benchmark, t, batchsize):
