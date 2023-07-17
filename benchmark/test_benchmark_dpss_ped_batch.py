@@ -86,7 +86,7 @@ def test_benchmark_dpss(benchmark_router, benchmark, t, batchsize):
     #from pypairing import G1, ZR
     from pypairing import Curve25519ZR as ZR, Curve25519G as G1
     n = 3 * t + 1
-    d = t
+    d = n-t-1
     t_prime = t
     n_prime = n
     d_prime = d
